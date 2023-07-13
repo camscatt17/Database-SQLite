@@ -18,6 +18,28 @@ cursor.execute("""
     );
     
 """)
-print("Tabela Criada!")
+
+#Inserindo dados na tabela
+cursor.execute("""
+    INSERT INTO clientes(nome, idade, cpf)
+    VALUES ('Joao', 26, '123.456.789-01')
+               """)
+conn.commit()
+print("Dados inseridos!")
+
+#Solicitando dados ao usuário
+nome = str(input("Informe o seu nome: "))
+idade = str(input("Informe a sua idade: "))
+cpf = str(input("Informe o seu CPF: "))
+
+#Inserindo dados na tabela atraves de dados fornecidos pelo usuário
+cursor.execute("""
+    INSERT INTO clientes(nome, idade, cpf)
+    VALUES (?, ?, ?)
+               """, (nome, idade, cpf))
+conn.commit()
+print("Dados inseridos!")
+
+
 
 conn.close()
