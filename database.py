@@ -20,26 +20,49 @@ cursor.execute("""
 """)
 
 #Inserindo dados na tabela
-cursor.execute("""
-    INSERT INTO clientes(nome, idade, cpf)
-    VALUES ('Joao', 26, '123.456.789-01')
-               """)
-conn.commit()
-print("Dados inseridos!")
+# cursor.execute("""
+#     INSERT INTO clientes(nome, idade, cpf)
+#     VALUES ('Joao', 26, '123.456.789-01')
+#                """)
+# conn.commit()
+# print("Dados inseridos!")
 
 #Solicitando dados ao usuário
-nome = str(input("Informe o seu nome: "))
-idade = str(input("Informe a sua idade: "))
-cpf = str(input("Informe o seu CPF: "))
+# nome = str(input("Informe o seu nome: "))
+# idade = str(input("Informe a sua idade: "))
+# cpf = str(input("Informe o seu CPF: "))
 
 #Inserindo dados na tabela atraves de dados fornecidos pelo usuário
+# cursor.execute("""
+#     INSERT INTO clientes(nome, idade, cpf)
+#     VALUES (?, ?, ?)
+#                """, (nome, idade, cpf))
+# conn.commit()
+# print("Dados inseridos!")
+
+#Imprimindo os dados da table
+# cursor.execute("""
+#     SELECT * FROM clientes
+#     WHERE id = 2;
+# """)
+# captura = cursor.fetchall()
+# for linha in captura:
+#     print(linha)
+
+# Deletando um registro
+# cursor.execute("""
+#     DELETE FROM clientes
+#     WHERE id = 3
+# """)
+# conn.commit()
+# print("Dados excluídos com sucesso!")
+
+# Alterando a tabela com a inserção de uma nova coluna 
 cursor.execute("""
-    INSERT INTO clientes(nome, idade, cpf)
-    VALUES (?, ?, ?)
-               """, (nome, idade, cpf))
+    ALTER TABLE clientes
+    ADD COLUMN cidade VARCHAR(30);
+""")
 conn.commit()
-print("Dados inseridos!")
-
-
+print("Tabela alterada!")
 
 conn.close()
